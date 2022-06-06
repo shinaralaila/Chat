@@ -1,0 +1,61 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div >
+ <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            <a class="navbar-brand" routerLink="../home">Chat App</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a  routerLink="../home" class="nav-link">Home</a>
+            </li>
+            <li class="nav-list-item">
+                <a  routerLink="../hidden" class="nav-link">Hidden Users</a>
+            </li>
+            <li class="nav-list-item">
+                <a  routerLink="../users"class="nav-link"> Users</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="#" class="nav-link">Logout</a>
+            </li>
+            
+        </ul>
+
+    </nav>
+
+  </div>
+
+
+
+
+
+
+
+<div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>
+            <h1><b>Blocked Users</b></h1>
+          </th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let usr of blockedusers">
+          <td>
+            <h3>{{ usr.relateuser }}</h3>
+          </td>
+  
+          <td><button class="btn btn-success button" routerLink="../users"
+            (click)="unblockuser(usrl,usr.relateuser)">Unblock</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,85 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row forms-container" style="margin-top:20% ;">
+        <div class="col-md-4  mt-5">
+            <div class="formbackground green-text">
+                <div class="skew-down-background"></div>
+                <h2 class="text-center mt-2">Register Form</h2>
+                <form method="post" class="signup" role="form" #f="ngForm" (ngSubmit)="registerUser()">
+                    <div class="form-group" [ngClass]="{
+                           'has-danger': username.invalid && (username.dirty || username.touched),
+                           'has-success': username.valid && (username.dirty || username.touched)
+                      }">
+                        <div class="form-group mt-4">
+                            <label class="green-text" for="name">Username</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                placeholder="Enter valid Username" value="" pattern="[a-zA-Z]+$"
+                                [(ngModel)]="registerUserData.username" #username="ngModel" required minlength="4"
+                                required>
+                            <div class="form-control-feedback"
+                                *ngIf="username.errors && (username.dirty || username.touched)">
+                                <p style="font-weight: bold;color:red; " *ngIf="username.errors.required"
+                                    class="text-danger">user name is required</p>
+                                <p style="font-weight: bold;color: red; " *ngIf="username.errors.minlength"
+                                    class="text-danger">username must be at least 4 characters long</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{
+                                             'has-danger': email.invalid && (email.dirty || email.touched),
+                                             'has-success': email.valid && (email.dirty || email.touched)
+                                            }">
+                        <div class="form-group mt-4">
+                            <label class="green-text" for="email_id">Email address</label>
+                            <input type="email" name="email" class="form-control" id="email_id"
+                                placeholder="Enter valid email address" value="" [(ngModel)]="registerUserData.email"
+                                #email="ngModel" pattern="[^ @]*@[^ @]*" required />
+                            <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+                                <p style="font-weight: bold;color: red; " *ngIf="email.errors.required"
+                                    class="text-danger">email is required</p>
+                                <p style="font-weight: bold;color: red; " *ngIf="email.errors.pattern"
+                                    class="text-danger">email is not valid</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{
+                                  'has-danger': password.invalid && (password.dirty || password.touched),
+                                  'has-success': password.valid && (password.dirty || password.touched)
+                                   }">
+                        <div class="form-group mt-4">
+                            <label class="green-text" for="password">Password</label>
+                            <input type="password" name="password" class="form-control" id="password"
+                                placeholder="Please provide password" value="" [(ngModel)]="registerUserData.password"
+                                #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required minlength="8"
+                                required />
+                            <div class="form-control-feedback"
+                                *ngIf="password.errors && (password.dirty || password.touched)">
+                                <p style="font-weight: bold;color: red; " *ngIf="password.errors.required"
+                                    class="text-danger">Password is required</p>
+                                <p style="font-weight: bold;color: red; " *ngIf="password.errors.minlength"
+                                    class="text-danger">Password must be at least 8 characters long</p>
+                                <p style="font-weight: bold;color: red; " *ngIf="password.errors.pattern"
+                                    class="text-danger">Password must contain at least the one capital letter ,a small
+                                    letter or a number </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label class="green-text" for="password">Confirm Password</label>
+                        <input type="password" name="cnfpassword" class="form-control" id="confirm password"
+                            placeholder="Please retype password" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            autocomplete="off" spellcheck="false" [(ngModel)]="registerUserData.password"
+                            #password="ngModel" />
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn formsubmitbtn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

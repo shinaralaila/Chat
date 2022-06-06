@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.bodyclass{
+    /* background:url('/assets/img/chat.jpg') no-repeat center center; */
+    background-color: aliceblue;
+    background-size:cover ;
+    width: 100%;
+    height: 100%;
+} 

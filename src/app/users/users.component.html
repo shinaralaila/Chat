@@ -1,0 +1,115 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div >
+ <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            <a class="navbar-brand" routerLink="../home">Chat App</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a  routerLink="../home" class="nav-link">Home</a>
+            </li>
+            <li class="nav-list-item">
+                <a  routerLink="../hidden" class="nav-link">Hidden Users</a>
+            </li>
+            <li class="nav-list-item">
+                <a  routerLink="../blocked"class="nav-link">Blocked Users</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="#" class="nav-link">Logout</a>
+            </li>
+            
+        </ul>
+
+    </nav>
+
+  </div>
+
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>
+          <h1><b>Users</b></h1>
+        </th>
+        <th></th>
+        <th></th>
+        <th align="right">
+          <h3>LoggedIn: {{usrl}}</h3>
+        </th>
+
+      </tr>
+      <tr>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let usr of users">
+        <td>
+          <h3>{{ usr.username }}</h3>
+        </td>
+        <!-- <td><button class="btn btn-success button" routerLink="/chatinbox"(click)="chatuser(usrl,usr.username)" [queryParams]="{ name: usr.username, email: usr.email }" >Chat</button></td>
+            <td><button class="btn btn-success button" routerLink="/users" (click)="blockuser(usrl,usr.username)" [queryParams]="{ name: usr.username, email: usr.email }" >Block</button></td>
+            <td><button class="btn btn-success button" routerLink="/users"(click)="hideuser(usrl,usr.username)" [queryParams]="{ name: usr.username, email: usr.email }" >Hide</button></td> -->
+
+        <td><button class="btn btn-success button" routerLink="../chat"
+            (click)="chatuser(usrl,usr.username)">Chat</button></td>
+        <td><button class="btn btn-success button" routerLink="../users"
+            (click)="blockuser(usrl,usr.username)">Block</button></td>
+        <td><button class="btn btn-success button" routerLink="../users"
+            (click)="hideuser(usrl,usr.username)">Hide</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<div style="margin-left:20% ;">
+  
+      <button style="width:10% ;" class="btn btn-success button" routerLink="../chatroom" >Create Room</button>
+  </div>
+  
+  
+<br>
+
+
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>
+          <h1><b>Chat Rooms</b></h1>
+        </th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let room of rooms">
+        <td>
+          <h3>{{ room.chatroom }}</h3>
+        </td>
+
+        <td><button class="btn btn-success button" routerLink="../chatinbox"
+            (click)="roomuser(usrl, room.chatroom)">Join</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="margin-left:30% ;">
+  <
+<li>
+  <h3> <a class="nav-link text-dark dropdown-item cursor" routerLink="../hidden">Hidden Users</a>
+  </h3>
+ </li> 
+ <li>
+   <h3>
+   <a class="nav-link text-dark dropdown-item cursor" routerLink="../blocked">Blocked Users</a>
+  </h3>
+ </li>
+</div>
